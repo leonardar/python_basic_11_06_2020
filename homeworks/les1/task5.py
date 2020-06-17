@@ -4,19 +4,16 @@
 # Если фирма отработала с прибылью, вычислите рентабельность выручки (соотношение прибыли к выручке).
 # Далее запросите численность сотрудников фирмы и определите прибыль фирмы в расчете на одного сотрудника.
 
-
-
-
 while True:
-    income = input('Введите доходы вашей фирмы за текущий период: ')
+    income = input('Введите доходы вашей фирмы за текущий период:')
     if income.isdigit():
         income = int(income)
         break
     else:
-        print('')
+        print('Это не число!')
 
 while True:
-    expense = input('Введите расходы вашей фирмы за текущий период:  ')
+    expense = input('Введите расходы вашей фирмы за текущий период:')
     if expense.isdigit():
         expense = int(expense)
         break
@@ -26,30 +23,16 @@ while True:
 proceeds = income - expense
 
 if not proceeds <= 0:
-        print('Бизнес прибыльный работаем дальше!')
-        while True:
-            rent = proceeds / income * 100
-            emp = input('Введите численность сотрудников вашей фирмы: ')
-            if emp.isdigit():
-                emp = int(emp)
-                break
-            else:
-                print('Это не число!')
-        emp_inc = rent / emp
-        print(emp_inc)
+    print('Бизнес прибыльный работаем дальше!')
+    rent = proceeds / income * 100
+    while True:
+        emp = input('Введите численность сотрудников вашей фирмы:')
+        if emp.isdigit():
+            emp = int(emp)
+            break
+        else:
+            print('Это не число!')
+    emp_inc = rent / emp
+    print(emp_inc)
 else:
     print('Бизнес не приносит прибыли!')
-
-
-#
-# while True:
-#     emp = input('Введите численность сотрудников вашей фирмы: ')
-#     if emp.isdigit():
-#         emp = int(emp)
-#         break
-#     else:
-#         print('Это не число!')
-
-
-
-
