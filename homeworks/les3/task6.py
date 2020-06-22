@@ -14,15 +14,16 @@ flag = True
 lst = []
 while flag:
     flag = False
-    lst.clear()
+
     strings = input('Введите слова из латинских строчных букв через пробел:').split()
     for string in strings:
         if not string.isalpha():
             print('Повторите попытку!')
+            lst.clear()
             flag = True
             break
         else:
             string = int_func(string)
             lst.append(string)
 
-print(' '.join())
+print(' '.join(lst))
