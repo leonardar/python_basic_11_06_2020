@@ -2,35 +2,16 @@
 # необходимо использовать формулу: (выработка в часах * ставка в час) + премия. Для выполнения расчета для конкретных
 # значений необходимо запускать скрипт с параметрами.
 
+from sys import argv
+
 
 def salary(hour, rate, award):
     return (hour * rate) + award
 
 
-while True:
-     hour = input('Введите количество выработанных часов:')
-     if hour.isdigit():
-         hour = int(hour)
-         break
-     else:
-         print('Попробуйте еще раз!')
-
-
-while True:
-     rate = input('Введите вашу часовую тарифную ставку::')
-     if rate.isdigit():
-         rate = int(rate)
-         break
-     else:
-         print('Попробуйте еще раз!')
-
-
-while True:
-     award = input('Введите вашу месячную премию:')
-     if award.isdigit():
-         award = int(award)
-         break
-     else:
-         print('Попробуйте еще раз!')
-
-print('Итого:', salary(hour, rate, award), 'рублей')
+if len(argv) == 4:
+    _, hours, rate, award = argv
+    if hours.isdigit() and rate.isdigit() and award.isdigit():
+        print('Итого:', salary(int(hours), int(rate), int(award)), 'рублей')
+else:
+    print('Использование: python3 task1.py <hours> <rate> <award>')
