@@ -3,7 +3,7 @@
 # средней величины дохода сотрудников.
 
 if __name__ == '__main__':
-    with open("file3.txt") as in_file:
+    with open('file3.txt') as in_file:
         average = 0
         lines = 0
         for line in in_file:

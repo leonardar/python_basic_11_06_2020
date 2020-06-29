@@ -2,7 +2,7 @@
 # окончании ввода данных свидетельствует пустая строка.
 
 if __name__ == '__main__':
-    out_file = open('out.log', 'a')
+    out_file = open('file1.txt', 'a')
     data = input('Введите что-нибудь:')
     while data:
         out_file.write(f'{data}\n')
