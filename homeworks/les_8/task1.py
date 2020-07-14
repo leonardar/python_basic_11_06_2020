@@ -47,7 +47,7 @@ if __name__ == '__main__':
     date1 = Date('12-11-5678')
     print(date1)
 
-    print(Date.validate('77-77-7777'))
-    print(Date.validate('11-11-1111'))
+    assert Date.validate('77-77-7777') == False
+    assert Date.validate('11-11-1111') == True
 
-    print(Date.parse('12-11-2001'))
+    assert Date.parse('12-11-2001') == (12, 11, 2001)
