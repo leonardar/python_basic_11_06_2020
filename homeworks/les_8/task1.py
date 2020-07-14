@@ -4,12 +4,14 @@
 # валидацию числа, месяца и года (например, месяц — от 1 до 12). Проверить работу полученной структуры на реальных
 # данных.
 
+from calendar import isleap
+
 
 class Date:
 
     def __init__(self, date: str):
         if self.validate(date):
-            self.parse(date)
+            self._day, self._month, self._year = self.parse(date)
         else:
             raise ValueError('Неверный формат')
 
@@ -18,18 +20,27 @@ class Date:
 
     @classmethod
     def parse(cls, date: str):
-        cls._day, cls._month, cls._year = map(int, date.split('-'))
+        return tuple(map(int, date.split('-')))
 
     @staticmethod
     def validate(date: str) -> bool:
+        thirty = [1, 3, 5, 7, 8, 10, 12]
+        thirty_one = [4, 6, 9, 11]
         try:
             day, month, year = map(int, date.split('-'))
         except ValueError:
             return False
-        if 0 < day <= 31 and 0 < month <= 12 and len(str(year)) == 4:
-            return True
-        else:
-            return False
+        if len(str(year)) == 4:
+            if month == 2:
+                if isleap(year) and 0 < day <= 29:
+                    return True
+                elif not isleap(year) and 0 < day <= 28:
+                    return True
+            elif month in thirty and 0 < day <= 30:
+                return True
+            elif month in thirty_one and 0 < day <= 31:
+                return True
+        return False
 
 
 if __name__ == '__main__':
